@@ -280,6 +280,12 @@ export const useChatStore = create<ChatStore>()(
           const query = encodeURIComponent(content);
           const body = await requestWebSearch(query);
           const webSearchPrompt = `
+Assuming you are ChatGPT with internet access, and the user's question is:
+Query:
+"""
+${content}
+"""
+Please first start by answering the user's question, and then incorporate the search results I provide to give a final comprehensive answer.
 Using the provided web search results, write a comprehensive reply to the given query.
 If the provided search results refer to multiple subjects with the same name, write separate answers for each subject.
 Make sure to cite results using \`[[number](URL)]\` notation after the reference.
@@ -294,10 +300,7 @@ Current date:
 ${new Date().toISOString()}
 """
 
-Query:
-"""
-${content}
-"""
+
 
 Reply in Chinese and markdown.
           `;
