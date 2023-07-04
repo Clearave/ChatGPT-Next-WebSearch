@@ -402,9 +402,7 @@ export function ChatActions(props: {
         onClick={switchWebSearch}
       >
         {webSearch ? (
-          <div style={{ color: '#82e2ff' }}>
             <SearchOpenIcon />
-          </div>
         ) : !webSearch ? (
           <SearchCloseIcon />
         ) : null}
